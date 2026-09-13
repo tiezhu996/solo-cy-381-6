@@ -27,5 +27,8 @@ const (
 	LogExpenseExported     = "expense exported: group_id=%d rows=%d operator_id=%d"
 	LogSettlementGenerated = "settlement generated: group_id=%d transfers=%d operator_id=%d"
 	LogSettlementSettled   = "settlement settled: settlement_id=%d from_user_id=%d to_user_id=%d amount=%.2f operator_id=%d"
+	LogBudgetCreated       = "budget created: budget_id=%d group_id=%d category=%s month=%s amount=%.2f operator_id=%d"
+	LogBudgetUpdated       = "budget updated: budget_id=%d group_id=%d category=%s month=%s amount=%.2f operator_id=%d"
+	LogBudgetDisabled      = "budget disabled: budget_id=%d group_id=%d category=%s month=%s operator_id=%d"
 	LogAuditRecorded       = "audit recorded: user_id=%d action=%s resource_type=%s resource_id=%s request_id=%s"
 )

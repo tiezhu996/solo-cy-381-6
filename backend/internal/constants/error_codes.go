@@ -21,6 +21,9 @@ const (
 	CodeExpenseInvalidSplit  = 42201 // 分摊参数无效
 	CodeExpenseShareMismatch = 42202 // 分摊金额与消费总额不匹配
 	CodeSettlementInvalid    = 42203 // 结算建议无效
+	CodeBudgetExists         = 40905 // 同类别同月份预算已存在
+	CodeBudgetPastMonth      = 42204 // 已过月份预算仅可查看
+	CodeBudgetDisabled       = 42205 // 预算已停用
 	CodeNotGroupMember       = 40302 // 非群组成员
 	CodeTokenExpired         = 40102 // 令牌过期
 )

@@ -37,6 +37,7 @@ func Connect(dsn string, log logger.Interface) (*gorm.DB, error) {
 		&model.Expense{},
 		&model.ExpenseShare{},
 		&model.Settlement{},
+		&model.Budget{},
 		&model.AuditLog{},
 	); err != nil {
 		return nil, fmt.Errorf("auto migrate: %w", err)

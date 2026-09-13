@@ -97,6 +97,46 @@ func SettlementStatusText(s string) string {
 	}
 }
 
+// BudgetStatusText 将预算状态枚举转为中文文案。
+func BudgetStatusText(s string) string {
+	switch constants.BudgetStatus(s) {
+	case constants.BudgetActive:
+		return "生效中"
+	case constants.BudgetDisabled:
+		return "已停用"
+	default:
+		return "未知"
+	}
+}
+
+// BudgetUsageStatusText 将预算执行状态枚举转为中文文案。
+func BudgetUsageStatusText(s string) string {
+	switch constants.BudgetUsageStatus(s) {
+	case constants.UsageNormal:
+		return "正常"
+	case constants.UsageExhausted:
+		return "已用尽"
+	case constants.UsageExceeded:
+		return "已超出"
+	default:
+		return "未知"
+	}
+}
+
+// BudgetRowStatusText 将预算执行统计行状态枚举转为中文文案。
+func BudgetRowStatusText(s string) string {
+	switch constants.BudgetRowStatus(s) {
+	case constants.BudgetRowUnset:
+		return "未设置"
+	case constants.BudgetRowActive:
+		return "生效中"
+	case constants.BudgetRowDisabled:
+		return "已停用"
+	default:
+		return "未知"
+	}
+}
+
 // RoleText 将角色枚举转为中文文案。
 func RoleText(r string) string {
 	if constants.UserRole(r) == constants.RoleAdmin {

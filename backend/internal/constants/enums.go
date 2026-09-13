@@ -53,6 +53,32 @@ const (
 	SettlementSettled SettlementStatus = "settled" // 已结算
 )
 
+// BudgetStatus 预算状态枚举（数据库存储值）
+type BudgetStatus string
+
+const (
+	BudgetActive   BudgetStatus = "active"   // 生效中
+	BudgetDisabled BudgetStatus = "disabled" // 已停用
+)
+
+// BudgetUsageStatus 预算执行状态枚举（按已用金额与预算金额实时推导，不落库）
+type BudgetUsageStatus string
+
+const (
+	UsageNormal    BudgetUsageStatus = "normal"    // 正常（已用 < 预算）
+	UsageExhausted BudgetUsageStatus = "exhausted" // 用尽（已用 = 预算）
+	UsageExceeded  BudgetUsageStatus = "exceeded"  // 超出（已用 > 预算）
+)
+
+// BudgetRowStatus 月度预算执行统计行状态枚举（统计接口展示态）
+type BudgetRowStatus string
+
+const (
+	BudgetRowUnset    BudgetRowStatus = "unset"    // 未设置预算
+	BudgetRowActive   BudgetRowStatus = "active"   // 已设置且生效中
+	BudgetRowDisabled BudgetRowStatus = "disabled" // 已设置但已停用
+)
+
 // AuditAction 审计动作枚举
 type AuditAction string
 
@@ -71,6 +97,9 @@ const (
 	ActionExpenseExport      AuditAction = "expense.export"
 	ActionSettlementGenerate AuditAction = "settlement.generate"
 	ActionSettlementSettle   AuditAction = "settlement.settle"
+	ActionBudgetCreate       AuditAction = "budget.create"
+	ActionBudgetUpdate       AuditAction = "budget.update"
+	ActionBudgetDisable      AuditAction = "budget.disable"
 	ActionUserUpdate         AuditAction = "user.update"
 	ActionUserRole           AuditAction = "user.role"
 )
@@ -111,4 +140,27 @@ func IsValidExpenseStatus(s string) bool {
 // IsValidSettlementStatus 校验结算状态
 func IsValidSettlementStatus(s string) bool {
 	return SettlementStatus(s) == SettlementPending || SettlementStatus(s) == SettlementSettled
+}
+
+// IsValidBudgetStatus 校验预算状态
+func IsValidBudgetStatus(s string) bool {
+	return BudgetStatus(s) == BudgetActive || BudgetStatus(s) == BudgetDisabled
+}
+
+// IsValidBudgetUsageStatus 校验预算执行状态
+func IsValidBudgetUsageStatus(s string) bool {
+	switch BudgetUsageStatus(s) {
+	case UsageNormal, UsageExhausted, UsageExceeded:
+		return true
+	}
+	return false
+}
+
+// IsValidBudgetRowStatus 校验预算执行统计行状态
+func IsValidBudgetRowStatus(s string) bool {
+	switch BudgetRowStatus(s) {
+	case BudgetRowUnset, BudgetRowActive, BudgetRowDisabled:
+		return true
+	}
+	return false
 }

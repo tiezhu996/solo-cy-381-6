@@ -13,6 +13,9 @@ const (
 	MsgExpenseCreated      = "消费记录创建成功"
 	MsgSettlementGenerated = "结算建议生成成功"
 	MsgSettlementSettled   = "结算完成"
+	MsgBudgetCreated       = "预算设置成功"
+	MsgBudgetUpdated       = "预算调整成功"
+	MsgBudgetDisabled      = "预算已停用"
 	MsgExportStarted       = "导出成功"
 
 	MsgErrBind           = "请求体解析失败，请检查字段格式"
@@ -28,5 +31,9 @@ const (
 	MsgErrNotGroupMember = "您不是该群组成员，无法操作"
 	MsgErrExpenseInvalid = "分摊参数无效，请检查参与人与分摊配置"
 	MsgErrShareMismatch  = "分摊金额合计与消费总额不一致"
+	MsgErrBudgetExists   = "该类别当月预算已存在，请直接调整金额"
+	MsgErrBudgetPastMonth = "已过月份的预算仅可查看，无法修改"
+	MsgErrBudgetMonth    = "预算月份 month 格式无效，应为 YYYY-MM"
+	MsgErrBudgetDisabled = "该预算已停用，如需启用请重新添加"
 	MsgErrRateLimited    = "请求过于频繁，请稍后再试"
 )
